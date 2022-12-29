@@ -4,7 +4,7 @@ const ListProducts = () => {
   return (
     <>
         <h4 className="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 flex items-center"><GoVersions size={30} className='mr-2' />Produtos</h4>
-        <div className="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
+        <div className="w-full mb-8 md:mb-16 overflow-hidden rounded-lg shadow-xs">
             <div className="w-full overflow-x-auto">
                 <table className="w-full whitespace-no-wrap">
                   <thead>
