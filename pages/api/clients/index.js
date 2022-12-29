@@ -1,5 +1,7 @@
+import PocketBase from 'pocketbase'
+const pb = new PocketBase('https://rms-cloud.pockethost.io')
+
 export default async (req, res) => {
-    const response = await fetch('http://127.0.0.1:8090/api/collections/clients/records')
-    const data = await response.json()
-    res.send(data)
+    const result = await pb.collection('clients').getList(1, 20)
+    res.send(result)
 }
