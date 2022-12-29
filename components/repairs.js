@@ -18,9 +18,7 @@ const Repairs = () => {
                       <th className="px-4 py-3">Data Entrada</th>
                     </tr>
                   </thead>
-                  <tbody
-                    className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
-                  >
+                  <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                     <tr className="text-gray-700 dark:text-gray-400">
                       <td className="px-4 py-3">
                         <div className="flex items-center text-sm">
@@ -32,8 +30,29 @@ const Repairs = () => {
                       <td className="px-4 py-3 text-sm">
                         Vidro partido
                       </td>
+                      <td className="px-4 py-3 text-sm bg-green-200">
+                        Concluido
+                      </td>
                       <td className="px-4 py-3 text-sm">
-                        Em reparação
+                        5
+                      </td>
+                      <td className="px-4 py-3 text-sm">
+                        22/12/2022
+                      </td>
+                    </tr>
+                    <tr className="text-gray-700 dark:text-gray-400">
+                      <td className="px-4 py-3">
+                        <div className="flex items-center text-sm">
+                          <div>
+                            <p className="font-semibold">iPhone 7</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-4 py-3 text-sm">
+                        Vidro partido
+                      </td>
+                      <td className="px-4 py-3 text-sm bg-green-200">
+                        Concluido
                       </td>
                       <td className="px-4 py-3 text-sm">
                         5
