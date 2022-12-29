@@ -9,15 +9,17 @@ const Topbar = () => {
 
     const toggleUsermenu = () => {
         setShowUsermenu(current => !current)
-        showAlertmenu ?? setShowAlertmenu(false)
+        showUsermenu ? null : setShowAlertmenu(false)
     }
 
     const toggleAlertmenu = () => {
         setShowAlertmenu(current => !current)
+        showAlertmenu ? null : setShowUsermenu(false)
     }
 
     const toggleDarkMode = () => {
         setDarkMode(current => !current)
+        console.log();
     }
 
     const toggleMobileMenu = () => {
@@ -67,8 +69,8 @@ const Topbar = () => {
             <input
                 className="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input"
                 type="text"
-                placeholder="Search for projects"
-                aria-label="Search"
+                placeholder="Procurar"
+                aria-label="Procurar"
             />
             </div>
         </div>
@@ -80,7 +82,7 @@ const Topbar = () => {
                 onClick={toggleDarkMode}
             >
                 <svg
-                    className="w-5 h-5"
+                    className={`w-5 h-5 ${isDarkMode ? '' : 'hidden'}`}
                     aria-hidden="true"
                     fill="currentColor"
                     viewBox="0 0 20 20"
@@ -90,7 +92,7 @@ const Topbar = () => {
                     ></path>
                 </svg>
                 <svg
-                    className="w-5 h-5"
+                    className={`w-5 h-5 ${isDarkMode ? 'hidden' : ''}`}
                     aria-hidden="true"
                     fill="currentColor"
                     viewBox="0 0 20 20"
@@ -134,7 +136,7 @@ const Topbar = () => {
                     className="inline-flex items-center justify-between w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
                     href="#"
                     >
-                    <span>Messages</span>
+                    <span>Mensagens</span>
                     <span
                         className="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-600 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-600"
                     >
@@ -147,20 +149,7 @@ const Topbar = () => {
                     className="inline-flex items-center justify-between w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
                     href="#"
                     >
-                    <span>Sales</span>
-                    <span
-                        className="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-600 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-600"
-                    >
-                        2
-                    </span>
-                    </a>
-                </li>
-                <li className="flex">
-                    <a
-                    className="inline-flex items-center justify-between w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                    href="#"
-                    >
-                    <span>Alerts</span>
+                    <span>Alertas</span>
                     </a>
                 </li>
                 </ul>
@@ -202,7 +191,7 @@ const Topbar = () => {
                         d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                         ></path>
                     </svg>
-                    <span>Profile</span>
+                    <span>Perfil</span>
                     </a>
                 </li>
                 <li className="flex">
@@ -225,7 +214,7 @@ const Topbar = () => {
                         ></path>
                         <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                     </svg>
-                    <span>Settings</span>
+                    <span>Definições</span>
                     </a>
                 </li>
                 <li className="flex">
@@ -247,7 +236,7 @@ const Topbar = () => {
                         d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
                         ></path>
                     </svg>
-                    <span>Log out</span>
+                    <span>Sair</span>
                     </a>
                 </li>
                 </ul>
