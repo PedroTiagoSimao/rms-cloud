@@ -1,8 +1,12 @@
-import React from 'react'
+import ListClients from "../components/clients"
 
 const Clients = () => {
   return (
-    <div>Clients</div>
+    <main className="h-full pb-16 overflow-y-auto">
+      <div className="container grid px-6 pt-6 mx-auto">
+        <ListClients />
+      </div>
+    </main>
   )
 }
 
