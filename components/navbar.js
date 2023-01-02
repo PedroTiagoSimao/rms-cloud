@@ -36,7 +36,7 @@ const Navbar = () => {
                 <span className="ml-2" aria-hidden="true">+</span>
               </button>
             </div>
-            <li className={`relative px-6 py-3 ${active === '/' ? '[&>a]:text-gray-800' : '[&>span]:hidden'}`}>
+            <li className={`relative px-6 py-3 ${active === '/' ? '[&>a]:text-gray-800 [&>a]:dark:text-gray-500' : '[&>span]:hidden'}`}>
               <span
               className={`absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg`}
               aria-hidden="true"
@@ -51,7 +51,7 @@ const Navbar = () => {
             </li>
           </ul>
           <ul>
-            <li className={`relative px-6 py-3 ${active === '/clients' ? '[&>a]:text-gray-800' : '[&>span]:hidden'}`}>
+            <li className={`relative px-6 py-3 ${active === '/clients' ? '[&>a]:text-gray-800 [&>a]:dark:text-gray-500' : '[&>span]:hidden'}`}>
               <span
               className={`absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg `}
               aria-hidden="true"
@@ -64,7 +64,7 @@ const Navbar = () => {
                 <span className="ml-4">Clientes</span>
               </Link>
             </li>
-            <li className={`relative px-6 py-3 ${active === '/repairs' ? '[&>a]:text-gray-800' : '[&>span]:hidden'}`}>
+            <li className={`relative px-6 py-3 ${active === '/repairs' ? '[&>a]:text-gray-800 [&>a]:dark:text-gray-500' : '[&>span]:hidden'}`}>
               <span
               className={`absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg`}
               aria-hidden="true"
@@ -77,7 +77,7 @@ const Navbar = () => {
                 <span className="ml-4">Reparações</span>
               </Link>
             </li>
-            <li className={`relative px-6 py-3 ${active === '/quotes' ? '[&>a]:text-gray-800' : '[&>span]:hidden'}`}>
+            <li className={`relative px-6 py-3 ${active === '/quotes' ? '[&>a]:text-gray-800 [&>a]:dark:text-gray-500' : '[&>span]:hidden'}`}>
               <span
               className={`absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg`}
               aria-hidden="true"
@@ -90,7 +90,7 @@ const Navbar = () => {
                 <span className="ml-4">Orçamentos</span>
               </Link>
             </li>
-            <li className={`relative px-6 py-3 ${active === '/products' ? '[&>a]:text-gray-800' : '[&>span]:hidden'}`}>
+            <li className={`relative px-6 py-3 ${active === '/products' ? '[&>a]:text-gray-800 [&>a]:dark:text-gray-500' : '[&>span]:hidden'}`}>
               <span
               className={`absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg`}
               aria-hidden="true"
