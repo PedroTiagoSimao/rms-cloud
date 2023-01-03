@@ -1,6 +1,7 @@
-import { BsFillPeopleFill } from 'react-icons/bs';
+import { BsFillPeopleFill } from 'react-icons/bs'
 
-const ListClients = () => {
+const ListClients = ({data}) => {
+
   return (
     <>
         <h4 className="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 flex items-center"><BsFillPeopleFill size={30} className='mr-2' />Clientes</h4>
