@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Client = ({clientData}) => {
-    console.log(clientData.items.company);
+
   return (
     <main className="h-full pb-16 overflow-y-auto">
       <div className="container grid px-6 pt-6 mx-auto">
