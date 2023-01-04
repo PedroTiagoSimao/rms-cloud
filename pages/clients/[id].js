@@ -40,6 +40,58 @@ const Client = ({clientData}) => {
                                 </label>
                             </div>
                         </div>
+                        <label className="block text-sm">
+                            <span className="text-gray-700 dark:text-gray-400">Morada</span>
+                            <input
+                                className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                placeholder="Por definir"
+                                value={client.address}
+                                />
+                        </label>
+                        <div className='flex flex-col md:flex-row'>
+                            <div className='flex flex-col md:w-1/2 md:mr-4'>
+                                <label className="block text-sm">
+                                    <span className="text-gray-700 dark:text-gray-400">Cód. Postal</span>
+                                    <input
+                                        className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                        placeholder="Por definir"
+                                        value={client.cp}
+                                        />
+                                </label>
+                            </div>
+                            <div className='flex flex-col md:w-1/2'>
+                                <label className="block text-sm">
+                                    <span className="text-gray-700 dark:text-gray-400">Localidade</span>
+                                    <input
+                                        className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                        placeholder="Por definir"
+                                        value={client.city}
+                                        />
+                                </label>
+                            </div>
+                        </div>
+                        <div className='flex flex-col md:flex-row'>
+                            <div className='flex flex-col md:w-1/2 md:mr-4'>
+                                <label className="block text-sm">
+                                    <span className="text-gray-700 dark:text-gray-400">Pessoa de Contacto</span>
+                                    <input
+                                        className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                        placeholder="Por definir"
+                                        value={client.contact}
+                                        />
+                                </label>
+                            </div>
+                            <div className='flex flex-col md:w-1/2'>
+                                <label className="block text-sm">
+                                    <span className="text-gray-700 dark:text-gray-400">NIF</span>
+                                    <input
+                                        className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                        placeholder="Por definir"
+                                        value={client.nif}
+                                        />
+                                </label>
+                            </div>
+                        </div>
                         <div className="mt-4 text-sm">
                             <span className="text-gray-700 dark:text-gray-400">
                             Account Type
