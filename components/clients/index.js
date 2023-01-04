@@ -1,7 +1,8 @@
+import Link from 'next/link'
 import { BsFillPeopleFill } from 'react-icons/bs'
 
-const ListClients = ({data}) => {
-
+const ListClients = ({clients, pagination}) => {
+  console.log(clients);
   return (
     <>
         <h4 className="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 flex items-center"><BsFillPeopleFill size={30} className='mr-2' />Clientes</h4>
@@ -22,35 +23,40 @@ const ListClients = ({data}) => {
                   <tbody
                     className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
                   >
-                    <tr className="text-gray-700 dark:text-gray-400">
-                      <td className="px-4 py-3">
-                        <div className="flex items-center text-sm">
-                          <div>
-                            <p className="font-semibold">Hans Burger</p>
-                            <p className="text-xs text-gray-600 dark:text-gray-400">
-                              Green4You
-                            </p>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="px-4 py-3 text-sm">
-                        hans@burger.com
-                      </td>
-                      <td className="px-4 py-3 text-sm">
-                        919 919 919
-                      </td>
-                      <td className="px-4 py-3 text-sm">
-                        1/2 abertas
-                      </td>
-                      <td className="px-4 py-3 text-sm">
-                        Email / SMS
-                      </td>
-                    </tr>
+                      {
+                        clients.map((client) => {
+                          return(
+                            <tr key={client.id} className="text-gray-700 dark:text-gray-400 hover:bg-slate-200">
+                              <td className="px-4 py-3">
+                                <div className="flex items-center text-sm">
+                                  <div>
+                                    <Link href={`/clients/${client.id}`}>
+                                    <p className="font-semibold">{client.name}</p>
+                                    </Link>
+                                  </div>
+                                </div>
+                              </td>
+                              <td className="px-4 py-3 text-sm">
+                              {client.email}
+                              </td>
+                              <td className="px-4 py-3 text-sm">
+                              {client.phone}
+                              </td>
+                              <td className="px-4 py-3 text-sm">
+                                1/2 abertas
+                              </td>
+                              <td className="px-4 py-3 text-sm">
+                                Email / SMS
+                              </td>
+                            </tr>
+                          )
+                        })
+                      }
                   </tbody>
                 </table>
               </div>
               <div
-                className="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
+                className={`grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800 ${pagination ? '' : 'hidden'}`}>
                 <span className="flex items-center col-span-3">
                   A mostrar 21-30 de 100
                 </span>
