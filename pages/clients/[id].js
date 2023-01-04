@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Client = ({clientData}) => {
-    
+    console.log(clientData.items.company);
   return (
     <main className="h-full pb-16 overflow-y-auto">
       <div className="container grid px-6 pt-6 mx-auto">
@@ -15,7 +15,7 @@ const Client = ({clientData}) => {
                             <input
                                 className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 placeholder="Jane Doe"
-                                value={client.name}
+                                defaultValue={client.name}
                                 />
                         </label>
                         <div className='flex flex-col md:flex-row'>
@@ -25,7 +25,7 @@ const Client = ({clientData}) => {
                                     <input
                                         className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                         placeholder="Jane Doe"
-                                        value={client.email}
+                                        defaultValue={client.email}
                                         />
                                 </label>
                             </div>
@@ -35,7 +35,7 @@ const Client = ({clientData}) => {
                                     <input
                                         className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                         placeholder="Jane Doe"
-                                        value={client.phone}
+                                        defaultValue={client.phone}
                                         />
                                 </label>
                             </div>
@@ -45,7 +45,7 @@ const Client = ({clientData}) => {
                             <input
                                 className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                 placeholder="Por definir"
-                                value={client.address}
+                                defaultValue={client.address}
                                 />
                         </label>
                         <div className='flex flex-col md:flex-row'>
@@ -55,7 +55,7 @@ const Client = ({clientData}) => {
                                     <input
                                         className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                         placeholder="Por definir"
-                                        value={client.cp}
+                                        defaultValue={client.cp}
                                         />
                                 </label>
                             </div>
@@ -65,7 +65,7 @@ const Client = ({clientData}) => {
                                     <input
                                         className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                         placeholder="Por definir"
-                                        value={client.city}
+                                        defaultValue={client.city}
                                         />
                                 </label>
                             </div>
@@ -77,7 +77,7 @@ const Client = ({clientData}) => {
                                     <input
                                         className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                         placeholder="Por definir"
-                                        value={client.contact}
+                                        defaultValue={client.contact}
                                         />
                                 </label>
                             </div>
@@ -87,40 +87,24 @@ const Client = ({clientData}) => {
                                     <input
                                         className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                         placeholder="Por definir"
-                                        value={client.nif}
+                                        defaultValue={client.nif}
                                         />
                                 </label>
                             </div>
                         </div>
-                        <div className="mt-4 text-sm">
+                        <label className="block mt-4 text-sm">
                             <span className="text-gray-700 dark:text-gray-400">
-                            Account Type
+                            Empresa
                             </span>
-                            <div className="mt-2">
-                            <label
-                                className="inline-flex items-center text-gray-600 dark:text-gray-400"
+                            <select
+                            className="block w-1/2 mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                             >
-                                <input
-                                type="radio"
-                                className="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                                name="accountType"
-                                value="personal"
-                                />
-                                <span className="ml-2">Personal</span>
-                            </label>
-                            <label
-                                className="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400"
-                            >
-                                <input
-                                type="radio"
-                                className="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                                name="accountType"
-                                value="busines"
-                                />
-                                <span className="ml-2">Business</span>
-                            </label>
-                            </div>
-                        </div>
+                            <option>$1,000</option>
+                            <option>$5,000</option>
+                            <option>$10,000</option>
+                            <option>$25,000</option>
+                            </select>
+                        </label>
                     </div>
                 )
             })
