@@ -4,7 +4,7 @@ import ListQuotes from "../components/quotes"
 import ListProducts from "../components/products"
 import HomeCard from "../components/home-card"
 
-const index = ({clients}) => {
+const index = ({clients, repairs}) => {
   
   return (
     <main className="h-full pb-16 overflow-y-auto">
@@ -17,7 +17,7 @@ const index = ({clients}) => {
           <HomeCard text={'Orçamentos Abertos'} number={2} icon={'quotes'} bgColor={'bg-purple-100'} textColor={'text-purple-500'}  />
         </div>
         <ListClients clients={clients.items} pagination={true} />
-        <ListRepairs />
+        <ListRepairs repairs={repairs.items} />
         <ListQuotes />
         <ListProducts />
       </div>
@@ -29,9 +29,13 @@ export async function getServerSideProps() {
 
   const resClients = await fetch('https://rms-cloud.pockethost.io/api/collections/clients/records')
   const clients = await resClients.json()
+
+  const resRepairs = await fetch('https://rms-cloud.pockethost.io/api/collections/repairs/records')
+  const repairs = await resRepairs.json()
   return {
     props: {
-      clients
+      clients,
+      repairs
     },
   }
 }
