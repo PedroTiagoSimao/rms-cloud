@@ -1,8 +1,9 @@
 import Link from 'next/link'
+import { useEffect, useState } from 'react';
 import { BsFillPeopleFill } from 'react-icons/bs'
 
 const ListClients = ({clients, pagination}) => {
-  console.log(clients);
+
   return (
     <>
         <h4 className="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 flex items-center"><BsFillPeopleFill size={30} className='mr-2' />Clientes</h4>
@@ -32,6 +33,7 @@ const ListClients = ({clients, pagination}) => {
                                   <div>
                                     <Link href={`/clients/${client.id}`}>
                                     <p className="font-semibold">{client.name}</p>
+                                    <p className='text-xs'>{client.company}</p>
                                     </Link>
                                   </div>
                                 </div>
