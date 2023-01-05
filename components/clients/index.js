@@ -27,7 +27,7 @@ const ListClients = ({clients, pagination}) => {
                       {
                         clients.map((client) => {
                           return(
-                            <tr key={client.id} className="text-gray-700 dark:text-gray-400 hover:bg-slate-200">
+                            <tr key={client.id} className="text-gray-700 dark:text-gray-400 hover:bg-slate-200 dark:hover:bg-slate-700">
                               <td className="px-4 py-3">
                                 <div className="flex items-center text-sm">
                                   <div>
