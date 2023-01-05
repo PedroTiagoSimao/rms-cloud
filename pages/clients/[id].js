@@ -92,18 +92,13 @@ const Client = ({clientData}) => {
                                 </label>
                             </div>
                         </div>
-                        <label className="block mt-4 text-sm">
-                            <span className="text-gray-700 dark:text-gray-400">
-                            Empresa
-                            </span>
-                            <select
-                            className="block w-1/2 mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                            >
-                            <option>$1,000</option>
-                            <option>$5,000</option>
-                            <option>$10,000</option>
-                            <option>$25,000</option>
-                            </select>
+                        <label className="block text-sm">
+                            <span className="text-gray-700 dark:text-gray-400">Empresa</span>
+                            <input
+                                className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                placeholder="Por definir"
+                                defaultValue={client.company}
+                                />
                         </label>
                     </div>
                 )
@@ -118,9 +113,16 @@ export async function getServerSideProps(context) {
     const {id} = context.query
     const resClient = await fetch(`https://rms-cloud.pockethost.io/api/collections/clients/records?filter=(id=%27${id}%27)`)
     const clientData = await resClient.json()
+
+    const companyID = clientData.items[0].company
+    const resCompany = await fetch(`https://rms-cloud.pockethost.io/api/collections/companies/records?filter=(id=%27${companyID}%27)`)
+    const companyData = await resCompany.json()
+
+
     return {
       props: {
-        clientData
+        clientData,
+        companyData
       },
     }
   }
