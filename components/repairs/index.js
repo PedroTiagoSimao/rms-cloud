@@ -1,6 +1,6 @@
 import { BiCog } from 'react-icons/bi';
 
-const ListRepairs = () => {
+const ListRepairs = ({repairs}) => {
   return (
     <>
         <h4 className="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 flex items-center"><BiCog size={30} className='mr-2' />Reparações</h4>
@@ -19,48 +19,34 @@ const ListRepairs = () => {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                    <tr className="text-gray-700 dark:text-gray-400">
-                      <td className="px-4 py-3">
-                        <div className="flex items-center text-sm">
-                          <div>
-                            <p className="font-semibold">iPhone 7</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="px-4 py-3 text-sm">
-                        Vidro partido
-                      </td>
-                      <td className="px-4 py-3 text-sm bg-green-200">
-                        Concluido
-                      </td>
-                      <td className="px-4 py-3 text-sm">
-                        5
-                      </td>
-                      <td className="px-4 py-3 text-sm">
-                        22/12/2022
-                      </td>
-                    </tr>
-                    <tr className="text-gray-700 dark:text-gray-400">
-                      <td className="px-4 py-3">
-                        <div className="flex items-center text-sm">
-                          <div>
-                            <p className="font-semibold">iPhone 7</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="px-4 py-3 text-sm">
-                        Vidro partido
-                      </td>
-                      <td className="px-4 py-3 text-sm bg-green-200">
-                        Concluido
-                      </td>
-                      <td className="px-4 py-3 text-sm">
-                        5
-                      </td>
-                      <td className="px-4 py-3 text-sm">
-                        22/12/2022
-                      </td>
-                    </tr>
+                    {
+                      repairs.map((repair) => {
+                        return (
+                          <tr className="text-gray-700 dark:text-gray-400">
+                            <td className="px-4 py-3">
+                              <div className="flex items-center text-sm">
+                                <div>
+                                  <p className="font-semibold">{repair.equipment}</p>
+                                </div>
+                              </div>
+                            </td>
+                            <td className="px-4 py-3 text-sm">
+                              {repair.description}
+                            </td>
+                            <td className="px-4 py-3 text-sm bg-green-200">
+                              {repair.status}
+                            </td>
+                            <td className="px-4 py-3 text-sm">
+                              5
+                            </td>
+                            <td className="px-4 py-3 text-sm">
+                              {repair.created}
+                            </td>
+                          </tr>
+                        )
+                      })
+                    }
+                    
                   </tbody>
                 </table>
               </div>

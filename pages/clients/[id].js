@@ -1,7 +1,9 @@
 import React from 'react'
+import { globalVariables } from '../../lib/global-variables';
+import ListRepairs from "../../components/repairs"
 
-const Client = ({clientData}) => {
 
+const Client = ({clientData, repairData}) => {
   return (
     <main className="h-full pb-16 overflow-y-auto">
       <div className="container grid px-6 pt-6 mx-auto">
@@ -104,7 +106,9 @@ const Client = ({clientData}) => {
                 )
             })
         }
+      <ListRepairs repairs={repairData.items} />
       </div>
+      
     </main>
   )
 }
@@ -114,15 +118,15 @@ export async function getServerSideProps(context) {
     const resClient = await fetch(`https://rms-cloud.pockethost.io/api/collections/clients/records?filter=(id=%27${id}%27)`)
     const clientData = await resClient.json()
 
-    const companyID = clientData.items[0].company
-    const resCompany = await fetch(`https://rms-cloud.pockethost.io/api/collections/companies/records?filter=(id=%27${companyID}%27)`)
-    const companyData = await resCompany.json()
+    const companyID = globalVariables()
+    const resRepairs = await fetch(`https://rms-cloud.pockethost.io/api/collections/repairs/records?filter=(company=%27${companyID}%27)`)
+    const repairData = await resRepairs.json()
 
 
     return {
       props: {
         clientData,
-        companyData
+        repairData
       },
     }
   }
