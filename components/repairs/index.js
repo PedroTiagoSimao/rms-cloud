@@ -22,7 +22,7 @@ const ListRepairs = ({repairs}) => {
                     {
                       repairs.map((repair) => {
                         return (
-                          <tr className="text-gray-700 dark:text-gray-400">
+                          <tr key={repair.id} className="text-gray-700 dark:text-gray-400">
                             <td className="px-4 py-3">
                               <div className="flex items-center text-sm">
                                 <div>
