@@ -32,6 +32,7 @@ export async function getServerSideProps() {
 
   const resRepairs = await fetch('https://rms-cloud.pockethost.io/api/collections/repairs/records')
   const repairs = await resRepairs.json()
+  console.log(repairs);
   return {
     props: {
       clients,
