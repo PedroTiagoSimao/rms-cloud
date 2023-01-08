@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { globalVariables } from '../../lib/global-variables';
+import { companyID } from '../../lib/global-variables';
 import ListRepairs from "../../components/repairs"
 import PocketBase from "pocketbase"
 
@@ -158,7 +158,7 @@ export async function getServerSideProps(context) {
     const resClient = await fetch(`https://rms-cloud.pockethost.io/api/collections/clients/records?filter=(id=%27${id}%27)`)
     const clientData = await resClient.json()
 
-    const companyID = globalVariables()
+    const companyID = companyID()
     const resRepairs = await fetch(`https://rms-cloud.pockethost.io/api/collections/repairs/records?filter=(company=%27${companyID}%27)`)
     const repairData = await resRepairs.json()
 
