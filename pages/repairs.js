@@ -12,8 +12,9 @@ const Repairs = ({repairs}) => {
 
 export async function getServerSideProps() {
 
-  const resRepairs = await fetch('https://rms-cloud.pockethost.io/api/collections/repairs/records')
-  const repairs = await resRepairs.json()
+    const companyID = companyID()
+    const resRepairs = await fetch(`https://rms-cloud.pockethost.io/api/collections/repairs/records?filter=(company=%27${companyID}%27)`)
+    const repairs = await resRepairs.json()
 
   return {
     props: {
