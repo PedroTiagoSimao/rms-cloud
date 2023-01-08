@@ -3,6 +3,7 @@ import ListRepairs from "../components/repairs"
 import ListQuotes from "../components/quotes"
 import ListProducts from "../components/products"
 import HomeCard from "../components/home-card"
+import {companyID} from "../lib/global-variables"
 
 const index = ({clients, repairs}) => {
   
