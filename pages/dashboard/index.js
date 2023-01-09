@@ -1,9 +1,9 @@
-import ListClients from "../components/clients"
-import ListRepairs from "../components/repairs"
-import ListQuotes from "../components/quotes"
-import ListProducts from "../components/products"
-import HomeCard from "../components/home-card"
-import {companyID} from "../lib/global-variables"
+import ListClients from "../../components/clients"
+import ListRepairs from "../../components/repairs"
+import ListQuotes from "../../components/quotes"
+import ListProducts from "../../components/products"
+import HomeCard from "../../components/home-card"
+import {companyID} from "../../lib/global-variables"
 
 const Dashboard = ({clients, repairs}) => {
     return (

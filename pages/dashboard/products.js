@@ -1,13 +1,13 @@
-import ListQuotes from "../components/quotes"
+import ListProducts from "../../components/products"
 
-const Quotes = () => {
+const Products = () => {
   return (
     <main className="h-full pb-16 overflow-y-auto">
       <div className="container grid px-6 pt-6 mx-auto">
-        <ListQuotes />
+        <ListProducts />
       </div>
     </main>
   )
 }
 
-export default Quotes
+export default Products
