@@ -43,7 +43,7 @@ const Navbar = () => {
               ></span>
               <Link
                 className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
-                href={'/'}
+                href={'/dashboard'}
               >
                 <AiOutlineHome size={20} />
                 <span className="ml-4">Inicio</span>
@@ -58,7 +58,7 @@ const Navbar = () => {
               ></span>
               <Link
                 className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href={'/clients'}
+                href={'/dashboard/clients'}
               >
                 <BsFillPeopleFill size={20} />
                 <span className="ml-4">Clientes</span>
@@ -71,7 +71,7 @@ const Navbar = () => {
               ></span>
               <Link
                 className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href={'/repairs'}
+                href={'/dashboard/repairs'}
               >
                 <BiCog size={20} />
                 <span className="ml-4">Reparações</span>
@@ -84,7 +84,7 @@ const Navbar = () => {
               ></span>
               <Link
                 className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href={'/quotes'}
+                href={'/dashboard/quotes'}
               >
                 <MdOutlineRequestQuote size={20} />
                 <span className="ml-4">Orçamentos</span>
@@ -97,7 +97,7 @@ const Navbar = () => {
               ></span>
               <Link
                 className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href={'/products'}
+                href={'/dashboard/products'}
               >
                 <GoVersions size={20} />
                 <span className="ml-4">Produtos</span>

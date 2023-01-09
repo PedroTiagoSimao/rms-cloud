@@ -31,7 +31,7 @@ const ListClients = ({clients, pagination}) => {
                               <td className="px-4 py-3">
                                 <div className="flex items-center text-sm">
                                   <div>
-                                    <Link href={`/clients/${client.id}`}>
+                                    <Link href={`/dashboard/clients/${client.id}`}>
                                     <p className="font-semibold">{client.name}</p>
                                     <p className='text-xs'>{client.company}</p>
                                     </Link>
