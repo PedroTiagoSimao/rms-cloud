@@ -17,8 +17,8 @@ const Dashboard = () => {
               <HomeCard text={'Em Parceiros'} number={2} icon={'partners'} bgColor={'bg-green-100'} textColor={'text-green-500'}  />
               <HomeCard text={'Orçamentos Abertos'} number={2} icon={'quotes'} bgColor={'bg-purple-100'} textColor={'text-purple-500'}  />
             </div>
-            <ListClients pagination={true} />
-            <ListRepairs pagination={true} />
+            <ListClients company={companyID} pagination={true} />
+            <ListRepairs company={companyID} pagination={true} />
             <ListQuotes />
             <ListProducts />
           </div>
