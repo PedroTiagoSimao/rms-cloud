@@ -1,12 +1,43 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react';
 import { BsFillPeopleFill } from 'react-icons/bs'
+import Loading from '../loading'
 
-const ListClients = ({clients, pagination}) => {
+const ListClients = ({company, pagination}) => {
+  const [clients, setClients] = useState([])
+
+  const getClients = async () => {
+    let url = ''
+    company ? 
+      url = "https://rms-cloud.pockethost.io/api/collections/clients/records"
+      : url = `https://rms-cloud.pockethost.io/api/collections/clients/records?filter=(company=%27${company}%27)`
+
+    try {
+      const res = await fetch(url)
+      const data = await res.json()
+      setClients(data.items)
+    } catch (err) {
+        console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    getClients()
+  }, [])
+
+  if(clients.length === 0) {
+    console.log(clients.length)
+    return (
+      <>
+        <h4 className="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 flex items-center"><BsFillPeopleFill size={30} className='mr-2' />Clientes</h4>
+        <Loading  title={'clientes'} />
+      </>
+    )
+  }
 
   return (
     <>
-        <h4 className="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 flex items-center"><BsFillPeopleFill size={30} className='mr-2' />Clientes</h4>
+     <h4 className="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 flex items-center"><BsFillPeopleFill size={30} className='mr-2' />Clientes</h4>
         <div className="w-full mb-8 md:mb-16 overflow-hidden rounded-lg shadow-xs">
             <div className="w-full overflow-x-auto">
                 <table className="w-full whitespace-no-wrap">

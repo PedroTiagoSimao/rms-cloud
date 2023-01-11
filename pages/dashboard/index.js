@@ -6,7 +6,7 @@ import HomeCard from "../../components/home-card"
 import {companyID} from "../../lib/global-variables"
 import DashboardLayout from "../../components/layouts/dashboard"
 
-const Dashboard = ({clients, repairs}) => {
+const Dashboard = () => {
     return (
         <main className="h-full pb-16 overflow-y-auto">
           <div className="container grid px-6 mx-auto">
@@ -17,8 +17,8 @@ const Dashboard = ({clients, repairs}) => {
               <HomeCard text={'Em Parceiros'} number={2} icon={'partners'} bgColor={'bg-green-100'} textColor={'text-green-500'}  />
               <HomeCard text={'Orçamentos Abertos'} number={2} icon={'quotes'} bgColor={'bg-purple-100'} textColor={'text-purple-500'}  />
             </div>
-            <ListClients clients={clients.items} pagination={true} />
-            <ListRepairs repairs={repairs.items} />
+            <ListClients pagination={true} />
+            <ListRepairs pagination={true} />
             <ListQuotes />
             <ListProducts />
           </div>
@@ -29,19 +29,3 @@ const Dashboard = ({clients, repairs}) => {
 Dashboard.Layout = DashboardLayout
 
 export default Dashboard
-
-export async function getServerSideProps() {
-
-    const resClients = await fetch('https://rms-cloud.pockethost.io/api/collections/clients/records')
-    const clients = await resClients.json()
-  
-    const resRepairs = await fetch('https://rms-cloud.pockethost.io/api/collections/repairs/records')
-    const repairs = await resRepairs.json()
-    console.log(repairs);
-    return {
-      props: {
-        clients,
-        repairs
-      },
-    }
-  }

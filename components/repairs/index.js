@@ -1,8 +1,8 @@
 import { BiCog } from 'react-icons/bi';
 import { useEffect, useState } from "react";
+import Loading from "../loading"
 
-const ListRepairs = ({company}) => {
-
+const ListRepairs = ({company, pagination}) => {
   const [repairs, setRepairs] = useState([]);
 
   const getRepairs = async () => {
@@ -29,7 +29,7 @@ const ListRepairs = ({company}) => {
     return (
       <>
         <h4 className="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 flex items-center"><BiCog size={30} className='mr-2' />Reparações</h4>
-        <p>loading</p>
+        <Loading title={'reparações'} />
       </>
     )
   }
@@ -85,7 +85,7 @@ const ListRepairs = ({company}) => {
                 </table>
               </div>
               <div
-                className="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
+                className={`grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800 ${pagination ? '' : 'hidden'}`}>
                 <span className="flex items-center col-span-3">
                   A mostrar 21-30 de 100
                 </span>
