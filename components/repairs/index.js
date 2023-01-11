@@ -1,6 +1,38 @@
 import { BiCog } from 'react-icons/bi';
+import { useEffect, useState } from "react";
 
-const ListRepairs = ({repairs}) => {
+const ListRepairs = ({company}) => {
+
+  const [repairs, setRepairs] = useState([]);
+
+  const getRepairs = async () => {
+    let url = ''
+    company ? 
+      url = "https://rms-cloud.pockethost.io/api/collections/repairs/records"
+      : url = `https://rms-cloud.pockethost.io/api/collections/repairs/records?filter=(company=%27${company}%27)`
+
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      setRepairs(data.items);
+    } catch (error) {
+      console.log(error);
+    }
+    
+  };
+
+  useEffect(() => {
+    getRepairs();
+  }, []);
+
+  if (repairs.length === 0) {
+    return (
+      <>
+        <h4 className="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 flex items-center"><BiCog size={30} className='mr-2' />Reparações</h4>
+        <p>loading</p>
+      </>
+    )
+  }
 
   return (
     <>
@@ -22,6 +54,7 @@ const ListRepairs = ({repairs}) => {
                   <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                     {
                       repairs.map((repair) => {
+                        console.log(repair);
                         return (
                           <tr key={repair.id} className="text-gray-700 dark:text-gray-400">
                             <td className="px-4 py-3">
