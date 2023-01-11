@@ -1,4 +1,5 @@
 import ListQuotes from "../../components/quotes"
+import DashboardLayout from "../../components/layouts/dashboard"
 
 const Quotes = () => {
   return (
@@ -9,5 +10,7 @@ const Quotes = () => {
     </main>
   )
 }
+
+Quotes.Layout = DashboardLayout
 
 export default Quotes

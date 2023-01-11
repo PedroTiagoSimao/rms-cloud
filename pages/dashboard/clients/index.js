@@ -1,5 +1,6 @@
 import ListClients from "../../../components/clients"
 import { useEffect, useState } from "react"
+import DashboardLayout from "../../../components/layouts/dashboard"
 
 const Clients = () => {
   const [clients, setClients] = useState([])
@@ -26,5 +27,7 @@ const Clients = () => {
     </main>
   )
 }
+
+Clients.Layout = DashboardLayout
 
 export default Clients
