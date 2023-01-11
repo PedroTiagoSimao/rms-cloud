@@ -1,13 +1,19 @@
-import ListClients from "../../../components/clients"
 import { useEffect, useState } from "react"
+
+import ListClients from "../../../components/clients"
+import Loading from "../../../components/loading"
 
 const Clients = () => {
   const [clients, setClients] = useState([])
 
   const getClients = async () => {
-    const res = await fetch("https://rms-cloud.pockethost.io/api/collections/clients/records")
-    const data = await res.json()
-    setClients(data.items)
+    try {
+      const res = await fetch("https://rms-cloud.pockethost.io/api/collections/clients/records")
+      const data = await res.json()
+      setClients(data.items)
+    } catch (err) {
+        console.log(err);
+    }
   }
 
   useEffect(() => {
@@ -15,7 +21,7 @@ const Clients = () => {
   }, [])
 
   if(clients.length === 0) {
-    return <p>Loading</p>
+    return <Loading  title={'clientes'}/>
   }
   
   return (
