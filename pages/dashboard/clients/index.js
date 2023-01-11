@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import DashboardLayout from "../../../components/layouts/dashboard"
 
 import ListClients from "../../../components/clients"
 import Loading from "../../../components/loading"
@@ -32,5 +33,7 @@ const Clients = () => {
     </main>
   )
 }
+
+Clients.Layout = DashboardLayout
 
 export default Clients

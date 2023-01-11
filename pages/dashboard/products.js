@@ -1,4 +1,5 @@
 import ListProducts from "../../components/products"
+import DashboardLayout from "../../components/layouts/dashboard"
 
 const Products = () => {
   return (
@@ -9,5 +10,7 @@ const Products = () => {
     </main>
   )
 }
+
+Products.Layout = DashboardLayout
 
 export default Products

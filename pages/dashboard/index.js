@@ -4,6 +4,7 @@ import ListQuotes from "../../components/quotes"
 import ListProducts from "../../components/products"
 import HomeCard from "../../components/home-card"
 import {companyID} from "../../lib/global-variables"
+import DashboardLayout from "../../components/layouts/dashboard"
 
 const Dashboard = ({clients, repairs}) => {
     return (
@@ -24,6 +25,8 @@ const Dashboard = ({clients, repairs}) => {
         </main>
     )
 }
+
+Dashboard.Layout = DashboardLayout
 
 export default Dashboard
 

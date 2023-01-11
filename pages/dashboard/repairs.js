@@ -1,5 +1,6 @@
 import ListRepairs from "../../components/repairs"
 import { useEffect, useState } from "react";
+import DashboardLayout from "../../components/layouts/dashboard"
 
 const Repairs = () => {
   const [repairs, setRepairs] = useState([]);
@@ -26,5 +27,7 @@ const Repairs = () => {
     </main>
   )
 }
+
+Repairs.Layout = DashboardLayout
 
 export default Repairs
