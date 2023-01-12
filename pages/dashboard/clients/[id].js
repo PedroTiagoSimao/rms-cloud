@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { companyID } from '../../../lib/global-variables';
 import ListRepairs from "../../../components/repairs"
 import PocketBase from "pocketbase"
+import DashboardLayout from '../../../components/layouts/dashboard';
 
 const pb = new PocketBase('https://rms-cloud.pockethost.io')
 
@@ -152,6 +153,8 @@ const Client = ({clientData, repairData}) => {
     </main>
   )
 }
+
+Client.Layout = DashboardLayout
 
 export async function getServerSideProps(context) {
     const {id} = context.query
