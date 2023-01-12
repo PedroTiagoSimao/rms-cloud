@@ -6,7 +6,7 @@ import DashboardLayout from '../../../components/layouts/dashboard';
 
 const pb = new PocketBase('https://rms-cloud.pockethost.io')
 
-const Client = ({clientData, repairData}) => {
+const Client = ({clientData}) => {
 
     const [isLoading, setLoading] = useState(null)
 
@@ -148,7 +148,7 @@ const Client = ({clientData, repairData}) => {
                 )
             })
         }
-      <ListRepairs repairs={repairData.items} />
+      <ListRepairs company={companyID} />
       </div>
     </main>
   )
@@ -161,16 +161,9 @@ export async function getServerSideProps(context) {
     const resClient = await fetch(`https://rms-cloud.pockethost.io/api/collections/clients/records?filter=(id=%27${id}%27)`)
     const clientData = await resClient.json()
 
-    //const companyID = companyID()
-    //const resRepairs = await fetch(`https://rms-cloud.pockethost.io/api/collections/repairs/records?filter=(company=%27${companyID}%27)`)
-    const resRepairs = await fetch(`https://rms-cloud.pockethost.io/api/collections/repairs/records`)
-    const repairData = await resRepairs.json()
-
-
     return {
       props: {
-        clientData,
-        repairData
+        clientData
       },
     }
   }
