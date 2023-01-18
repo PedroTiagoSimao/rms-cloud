@@ -26,7 +26,6 @@ const ListClients = ({company, pagination}) => {
   }, [])
 
   if(clients.length === 0) {
-    console.log(clients.length)
     return (
       <>
         <h4 className="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 flex items-center"><BsFillPeopleFill size={30} className='mr-2' />Clientes</h4>
