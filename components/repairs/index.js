@@ -54,7 +54,6 @@ const ListRepairs = ({company, pagination}) => {
                   <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                     {
                       repairs.map((repair) => {
-                        console.log(repair);
                         return (
                           <tr key={repair.id} className="text-gray-700 dark:text-gray-400">
                             <td className="px-4 py-3">
