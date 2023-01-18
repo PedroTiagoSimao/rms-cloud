@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/router';
 import PocketBase from "pocketbase"
 import { companyID } from '../../../lib/global-variables';
-import ListRepairs from "../../../components/repairs"
-import Loading from '../../../components/loading';
 import DashboardLayout from '../../../components/layouts/dashboard';
 import ErrorModal from '../../../components/error-modal';
 
