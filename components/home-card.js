@@ -1,7 +1,12 @@
 import { BsFillPeopleFill } from 'react-icons/bs';
-import { BiCog } from 'react-icons/bi';
+import { BiCaretDownSquare, BiCog } from 'react-icons/bi';
 import { MdOutlineRequestQuote } from 'react-icons/md';
 import { GoVersions } from 'react-icons/go';
+import { useState, useEffect } from 'react';
+
+import PocketBase from 'pocketbase';
+
+const pb = new PocketBase('https://rms-cloud.pockethost.io');
 
 const icons = {
     clients: BsFillPeopleFill,
@@ -10,8 +15,30 @@ const icons = {
     partners: GoVersions
   };
 
-const HomeCard= ({icon, bgColor, textColor, text, number}) => {
-    const SelectedIcon = icons[icon]
+const HomeCard= ({icon, bgColor, textColor, text, number, table, company}) => {
+  const [card, setCard] = useState([])
+  const SelectedIcon = icons[icon]
+
+  const getCard = async () => {
+    try {
+      const resultList = await pb.collection(`repairs`).getList(1, 50, {
+        filter: `company = "${company}" && closed = false`,
+      });
+      setCard(resultList.items);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getCard();
+    console.log(card.length);
+  }, []);
+
+  if(card.length === 0) {
+    <p>A carregar</p>
+  }
+
   return (
     <div
         className="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
@@ -28,7 +55,7 @@ const HomeCard= ({icon, bgColor, textColor, text, number}) => {
             <p
             className="text-2xl font-semibold text-gray-700 dark:text-gray-200 text-center"
             >
-            {number}
+            {table === "repairs" ? card.length : 'aaa'}
             </p>
         </div>
     </div>
