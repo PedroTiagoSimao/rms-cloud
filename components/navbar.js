@@ -29,12 +29,14 @@ const Navbar = () => {
           </Link>
           <ul className="mt-6">
             <div className="px-6 my-6">
+              <Link href={'/dashboard/clients/add-client'}>
               <button
                 className="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
               >
                 Novo Cliente
                 <span className="ml-2" aria-hidden="true">+</span>
               </button>
+              </Link>
             </div>
             <li className={`relative px-6 py-3 ${active === '/' ? '[&>a]:text-gray-800 [&>a]:dark:text-gray-500' : '[&>span]:hidden'}`}>
               <span
