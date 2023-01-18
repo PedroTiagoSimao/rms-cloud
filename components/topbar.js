@@ -19,7 +19,6 @@ const Topbar = () => {
 
     const toggleDarkMode = () => {
         setDarkMode(current => !current)
-        console.log();
     }
 
     const toggleMobileMenu = () => {
