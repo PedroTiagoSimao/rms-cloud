@@ -1,6 +1,6 @@
-import ListRepairs from "../../components/repairs"
-import DashboardLayout from "../../components/layouts/dashboard"
-import { companyID } from "../../lib/global-variables"
+import ListRepairs from "../../../components/repairs"
+import DashboardLayout from "../../../components/layouts/dashboard"
+import { companyID } from "../../../lib/global-variables"
 
 const Repairs = () => {
   return (

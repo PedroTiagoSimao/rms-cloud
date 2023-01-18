@@ -1,8 +1,9 @@
-import { BiCog } from 'react-icons/bi';
+import { BiCog, BiAddToQueue, BiExport } from 'react-icons/bi';
 import { useEffect, useState } from "react";
+import Link from 'next/link';
 import Loading from "../loading"
 
-const ListRepairs = ({company, pagination}) => {
+const ListRepairs = ({company, pagination, clientPage}) => {
   const [repairs, setRepairs] = useState([]);
 
   const getRepairs = async () => {
@@ -28,7 +29,9 @@ const ListRepairs = ({company, pagination}) => {
   if (repairs.length === 0) {
     return (
       <>
-        <h4 className="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 flex items-center"><BiCog size={30} className='mr-2' />Reparações</h4>
+        <h4 className="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 flex items-center">
+          <BiCog size={30} className='mr-2' />Reparações
+        </h4>
         <Loading />
       </>
     )
@@ -36,7 +39,15 @@ const ListRepairs = ({company, pagination}) => {
 
   return (
     <>
-        <h4 className="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 flex items-center"><BiCog size={30} className='mr-2' />Reparações</h4>
+        <h4 className="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 flex items-center">
+          <BiCog size={30} className='mr-2' />Reparações
+        </h4>
+        {clientPage ? 
+          <div className='flex flex-row gap-5 mb-2 w-full justify-end pr-1 bg-white py-1 mt-[-10px] border-t border-b'>
+            <div className='flex flex-col justify-center items-center text-xs text-gray-600 cursor-pointer'><BiAddToQueue size={30} className='ml-2 text-gray-600' />Adicionar</div>
+            <div className='flex flex-col justify-center items-center text-xs text-gray-600 cursor-pointer'><BiExport size={30} className='ml-2 text-gray-600' />Exportar</div>
+          </div>
+          : '' }
         <div className="w-full mb-8 md:mb-16 overflow-hidden rounded-lg shadow-xs">
             <div className="w-full overflow-x-auto">
                 <table className="w-full whitespace-no-wrap">
@@ -59,7 +70,9 @@ const ListRepairs = ({company, pagination}) => {
                             <td className="px-4 py-3">
                               <div className="flex items-center text-sm">
                                 <div>
+                                <Link href={`/dashboard/repairs/${repair.id}`}>
                                   <p className="font-semibold">{repair.equipment}</p>
+                                </Link>
                                 </div>
                               </div>
                             </td>
