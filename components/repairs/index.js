@@ -3,14 +3,14 @@ import { useEffect, useState } from "react";
 import Link from 'next/link';
 import Loading from "../loading"
 
-const ListRepairs = ({company, pagination, clientPage}) => {
+const ListRepairs = ({organization, pagination, clientPage}) => {
   const [repairs, setRepairs] = useState([]);
 
   const getRepairs = async () => {
     let url = ''
-    company ? 
+    organization ? 
       url = "https://rms-cloud.pockethost.io/api/collections/repairs/records"
-      : url = `https://rms-cloud.pockethost.io/api/collections/repairs/records?filter=(company=%27${company}%27)`
+      : url = `https://rms-cloud.pockethost.io/api/collections/repairs/records?filter=(organizationID=%27${organization}%27)`
 
     try {
       const res = await fetch(url);

@@ -3,14 +3,14 @@ import { useEffect, useState } from 'react';
 import { BsFillPeopleFill } from 'react-icons/bs'
 import Loading from '../loading'
 
-const ListClients = ({company, pagination}) => {
+const ListClients = ({organization, pagination}) => {
   const [clients, setClients] = useState([])
 
   const getClients = async () => {
     let url = ''
-    company ? 
+    organization ? 
       url = "https://rms-cloud.pockethost.io/api/collections/clients/records"
-      : url = `https://rms-cloud.pockethost.io/api/collections/clients/records?filter=(company=%27${company}%27)`
+      : url = `https://rms-cloud.pockethost.io/api/collections/clients/records?filter=(organizationID=%27${organization}%27)`
 
     try {
       const res = await fetch(url)
