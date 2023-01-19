@@ -22,7 +22,7 @@ const HomeCard= ({icon, bgColor, textColor, text, number, table, company}) => {
   const getCard = async () => {
     try {
       const resultList = await pb.collection(`repairs`).getList(1, 50, {
-        filter: `company = "${company}" && closed = false`,
+        filter: `organizationID =${company} && closed = false`,
       });
       setCard(resultList.items);
     } catch (error) {
