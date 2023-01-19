@@ -42,12 +42,17 @@ const ListRepairs = ({company, pagination, clientPage}) => {
         <h4 className="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 flex items-center">
           <BiCog size={30} className='mr-2' />Reparações
         </h4>
+        
         {clientPage ? 
-          <div className='flex flex-row gap-5 mb-2 w-full justify-end pr-1 bg-white py-1 mt-[-10px] border-t border-b'>
-            <div className='flex flex-col justify-center items-center text-xs text-gray-600 cursor-pointer'><BiAddToQueue size={30} className='ml-2 text-gray-600' />Adicionar</div>
-            <div className='flex flex-col justify-center items-center text-xs text-gray-600 cursor-pointer'><BiExport size={30} className='ml-2 text-gray-600' />Exportar</div>
+          <div className='flex flex-row gap-5 mb-2 w-full justify-end pr-2 bg-white dark:bg-gray-800 py-2 mt-[-10px] rounded-lg'>
+            <div className='flex flex-col justify-center items-center text-xs text-gray-600 dark:text-gray-400 cursor-pointer'><BiAddToQueue size={25} className='ml-2 text-gray-600 dark:text-gray-400 ' />Adicionar</div>
+            <div className='flex flex-col justify-center items-center text-xs text-gray-600 dark:text-gray-400 cursor-pointer'><BiExport size={25} className='ml-2 text-gray-600 dark:text-gray-400 ' />Exportar</div>
           </div>
-          : '' }
+          :
+          <div className='flex flex-row gap-5 mb-2 w-full justify-end pr-2 bg-white dark:bg-gray-800 py-2 mt-[-10px] rounded-lg'>
+            <div className='flex flex-col justify-center items-center text-xs text-gray-600 dark:text-gray-400 cursor-pointer'><BiExport size={25} className='ml-2 text-gray-600 dark:text-gray-400 ' />Exportar</div>
+          </div>
+          }
         <div className="w-full mb-8 md:mb-16 overflow-hidden rounded-lg shadow-xs">
             <div className="w-full overflow-x-auto">
                 <table className="w-full whitespace-no-wrap">
@@ -55,6 +60,7 @@ const ListRepairs = ({company, pagination, clientPage}) => {
                     <tr
                       className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
                     >
+                      <th className="px-4 py-3">Num.</th>
                       <th className="px-4 py-3">Equipamento</th>
                       <th className="px-4 py-3">Avaria</th>
                       <th className="px-4 py-3">Estado</th>
@@ -67,6 +73,11 @@ const ListRepairs = ({company, pagination, clientPage}) => {
                       repairs.map((repair) => {
                         return (
                           <tr key={repair.id} className="text-gray-700 dark:text-gray-400">
+                             <td className="px-4 py-3 text-sm">
+                             <Link href={`/dashboard/repairs/${repair.id}`}>
+                                {repair.number}
+                              </Link>
+                            </td>
                             <td className="px-4 py-3">
                               <div className="flex items-center text-sm">
                                 <div>
