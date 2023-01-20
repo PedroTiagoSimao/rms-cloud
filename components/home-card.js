@@ -15,14 +15,19 @@ const icons = {
     partners: GoVersions
   };
 
-const HomeCard= ({icon, bgColor, textColor, text, number, table, company}) => {
+const HomeCard= ({icon, bgColor, textColor, text, table, organization}) => {
   const [card, setCard] = useState([])
   const SelectedIcon = icons[icon]
 
   const getCard = async () => {
+    let filterCard = ''
+    organization ?
+      filterCard = `organizationID="${organization}" && closed=False`
+      : filterCard = `closed=False`
+      
     try {
-      const resultList = await pb.collection(`repairs`).getList(1, 50, {
-        filter: `organizationID =${company} && closed = false`,
+      const resultList = await pb.collection(`${table}`).getList(1, 50, {
+        filter: filterCard,
       });
       setCard(resultList.items);
     } catch (error) {
@@ -32,7 +37,6 @@ const HomeCard= ({icon, bgColor, textColor, text, number, table, company}) => {
 
   useEffect(() => {
     getCard();
-    console.log(card.length);
   }, []);
 
   if(card.length === 0) {
@@ -55,7 +59,7 @@ const HomeCard= ({icon, bgColor, textColor, text, number, table, company}) => {
             <p
             className="text-2xl font-semibold text-gray-700 dark:text-gray-200 text-center"
             >
-            {table === "repairs" ? card.length : 'aaa'}
+            {card.length === 0 ? '' : card.length}
             </p>
         </div>
     </div>
