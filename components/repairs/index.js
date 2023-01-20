@@ -63,9 +63,9 @@ const ListRepairs = ({organization, pagination, clientPage}) => {
                       <th className="px-4 py-3">Num.</th>
                       <th className="px-4 py-3">Equipamento</th>
                       <th className="px-4 py-3">Avaria</th>
-                      <th className="px-4 py-3">Estado</th>
                       <th className="px-4 py-3">Intervenções</th>
                       <th className="px-4 py-3">Data Entrada</th>
+                      <th className="px-4 py-3">Estado</th>
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
@@ -90,14 +90,14 @@ const ListRepairs = ({organization, pagination, clientPage}) => {
                             <td className="px-4 py-3 text-sm">
                               {repair.description}
                             </td>
-                            <td className="px-4 py-3 text-sm bg-green-200">
-                              {repair.status}
-                            </td>
                             <td className="px-4 py-3 text-sm">
                               5
                             </td>
                             <td className="px-4 py-3 text-sm">
                               {repair.created}
+                            </td>
+                            <td className="px-4 py-3 text-sm bg-green-200">
+                              {repair.status}
                             </td>
                           </tr>
                         )
