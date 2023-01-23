@@ -1,16 +1,18 @@
 import React, { useState, useEffect, use } from 'react'
 import { useRouter } from 'next/router';
 import PocketBase from "pocketbase"
-import Datepicker from 'react-tailwindcss-datepicker';
 
 import Loading from '../../../components/loading';
 import Status from '../../../components/repairs/status';
 import Attachments from '../../../components/repairs/attachments';
+import PartnerCheckBox from '../../../components/repairs/partnercheckbox';
+import DatePicker from '../../../components/repairs/datepicker';
 import Partners from '../../../components/repairs/partners';
 import DashboardLayout from '../../../components/layouts/dashboard'
 import Link from 'next/link';
 
 const pb = new PocketBase('https://rms-cloud.pockethost.io')
+pb.autoCancellation(false)
 
 const Repair = () => {
   const router = useRouter()
@@ -18,22 +20,6 @@ const Repair = () => {
   const [isLoading, setLoading] = useState(false)
   const [repairs, setRepairs] = useState([])
   const [status, setStatus] = useState()
-  const [partnerDate, setPartnerDate] = useState({
-    startDate: null,
-    endDate: null
-  })
-
-  const [repairData, setRepairData] = useState({
-    "equipment": "",
-    "serial": "",
-    "description": "",
-    "notes": "",
-  })
-
-  const handlePartnerDate = (newDate) => {
-    console.log("date: ", newDate);
-    setPartnerDate(newDate)
-  }
 
   const getRepairs = async () => {
     let url = `https://rms-cloud.pockethost.io/api/collections/repairs/records?filter=(id=%27${id}%27)`
@@ -48,11 +34,9 @@ const Repair = () => {
   }
   
   useEffect(() => {
-    if(!id) {
-        return
-    }
+    if(!router.isReady) return
     getRepairs()
-  }, [])
+  }, [router.isReady])
 
   if(repairs.length === 0) {
     return (
@@ -73,7 +57,6 @@ const Repair = () => {
       "notes": event.target.notes.value,
   };
     const record = await pb.collection('repairs').update(id, data);
-    console.log(repairData);
     setLoading(false)
   }
 
@@ -171,41 +154,17 @@ const Repair = () => {
                         </div>
                     </div>
                   </div>
-                  <div className="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-                  <div className='flex flex-col md:flex-row'>
-                      <div className='flex flex-col md:w-1/3 md:mr-4 md:mt-1'>
-                        <p className='text-sm'>Parceiro</p>
-                        <div className="tems-center justify-center h-fit">
-                          <label className="inline-flex items-center text-sm">
-                              <input
-                                type="checkbox"
-                                className="w-8 h-8 text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                              />
-                              <span className="text-gray-700 dark:text-gray-400 ml-1">Envidado para parceiro</span>
-                          </label>
-                        </div>
-                      </div>
-                      <div className="flex flex-col md:w-1/3 md:mr-4">
-                      <p className='text-sm'>Data</p>
-                        <div className="flex items-center justify-center">
-                        <Datepicker 
-                          primaryColor={"purple"}
-                          inputClassName={"placeholder:text-gray-700 font-normal border rounded border-gray-200"}
-                          useRange={false} 
-                          asSingle={true} 
-                          value={partnerDate} 
-                          onChange={handlePartnerDate} 
-                          displayFormat={"DD/MM/YYYY"} 
-                          /> 
-                        </div>
-                      </div>
-                      <div className="flex flex-col md:w-1/3">
-                      <p className='text-sm'>Nome do Parceiro</p>
-                          <label className="flex justify-end items-center text-sm">
-                            <Partners repairID={repair.id} organizationID={repair.organizationID} repairPartnerID={repair.partner} />
-                          </label>
-                      </div>
-                    </div>
+                  <div className="flex flex-row px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                      <PartnerCheckBox 
+                        repairID={repair.id}
+                        currentSentToPartner = {repair.sent_to_partner} />
+                      <DatePicker 
+                        repairID={repair.id}
+                        dateSentToPartner = {`startDate: ${repair.date_sent_to_partner}, endDate: ${repair.date_sent_to_partner.split(' ')[0]}`} />
+                      <Partners 
+                        repairID={repair.id}
+                        organizationID={repair.organizationID}
+                        repairPartnerID={repair.partner}/>
                   </div>
                 </form>
               </div>

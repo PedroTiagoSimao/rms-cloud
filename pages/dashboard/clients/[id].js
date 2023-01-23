@@ -27,11 +27,9 @@ const Client = () => {
     }
 
     useEffect(() => {
-        if(!id) {
-            return
-        }
+        if(!router.isReady) return
         getClients()
-    }, [])
+    }, [router.isReady])
 
     if(clients.length === 0) {
         return (
