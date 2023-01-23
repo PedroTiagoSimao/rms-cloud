@@ -62,6 +62,7 @@ const ListRepairs = ({organization, pagination, clientPage}) => {
                     >
                       <th className="px-4 py-3">Num.</th>
                       <th className="px-4 py-3">Equipamento</th>
+                      <th className="px-4 py-3">Nº Série/IMEI</th>
                       <th className="px-4 py-3">Avaria</th>
                       <th className="px-4 py-3">Intervenções</th>
                       <th className="px-4 py-3">Data Entrada</th>
@@ -86,6 +87,9 @@ const ListRepairs = ({organization, pagination, clientPage}) => {
                                 </Link>
                                 </div>
                               </div>
+                            </td>
+                            <td className="px-4 py-3 text-sm">
+                              {repair.serial}
                             </td>
                             <td className="px-4 py-3 text-sm">
                               {repair.description}
