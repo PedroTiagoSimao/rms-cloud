@@ -6,7 +6,7 @@ import Loading from '../../../components/loading';
 import Status from '../../../components/repairs/status';
 import Attachments from '../../../components/repairs/attachments';
 import PartnerCheckBox from '../../../components/repairs/partnercheckbox';
-import DatePicker from '../../../components/repairs/datepicker';
+import PartnerDatePicker from '../../../components/repairs/datepicker';
 import Partners from '../../../components/repairs/partners';
 import DashboardLayout from '../../../components/layouts/dashboard'
 import Link from 'next/link';
@@ -154,13 +154,13 @@ const Repair = () => {
                         </div>
                     </div>
                   </div>
-                  <div className="flex flex-row px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                  <div className="flex flex-row px-4 py-3 mb-8  bg-white rounded-lg shadow-md dark:bg-gray-800">
                       <PartnerCheckBox 
                         repairID={repair.id}
                         currentSentToPartner = {repair.sent_to_partner} />
-                      <DatePicker 
+                      <PartnerDatePicker 
                         repairID={repair.id}
-                        dateSentToPartner = {`startDate: ${repair.date_sent_to_partner}, endDate: ${repair.date_sent_to_partner.split(' ')[0]}`} />
+                        dateSentToPartner = {`startDate: "${repair.date_sent_to_partner.split(' ')[0]}", endDate: "${repair.date_sent_to_partner.split(' ')[0]}"`} />
                       <Partners 
                         repairID={repair.id}
                         organizationID={repair.organizationID}

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import Datepicker from 'react-tailwindcss-datepicker';
 import PocketBase from "pocketbase"
 
 const pb = new PocketBase('https://rms-cloud.pockethost.io')
@@ -43,7 +42,7 @@ const Partners = ({repairID, organizationID, repairPartnerID}) => {
   return (
 
         <div className="flex flex-col md:w-1/3">
-        <p className='text-sm'>Nome do Parceiro</p>
+        <p className='text-sm  text-gray-600 dark:text-gray-400 mb-1'>Nome do Parceiro</p>
             <label className="flex justify-end items-center text-sm">
                 <select className=" w-full text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                     value={selectedPartner}

@@ -12,7 +12,6 @@ const PartnerCheckBox = ({ repairID, currentSentToPartner }) => {
     };
 
     useEffect(() => {
-        console.log(value);
         const updateSentToPartner = async () => {
             const data = {
                 "sent_to_partner" : value
@@ -27,7 +26,7 @@ const PartnerCheckBox = ({ repairID, currentSentToPartner }) => {
 
     return (
         <div className='flex flex-col md:w-1/3 md:mr-4 md:mt-1'>
-            <p className='text-sm'>Parceiro</p>
+            <p className='text-sm text-gray-600 dark:text-gray-400 mb-1'>Parceiro</p>
             <div className="tems-center justify-center h-fit">
                 <label className="inline-flex items-center text-sm">
                     <input
