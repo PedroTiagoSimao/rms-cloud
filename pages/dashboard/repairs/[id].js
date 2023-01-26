@@ -8,6 +8,7 @@ import Attachments from '../../../components/repairs/attachments';
 import PartnerCheckBox from '../../../components/repairs/partnercheckbox';
 import PartnerDatePicker from '../../../components/repairs/datepicker';
 import Partners from '../../../components/repairs/partners';
+import Procedures from '../../../components/procedures';
 import DashboardLayout from '../../../components/layouts/dashboard'
 import Link from 'next/link';
 
@@ -167,6 +168,7 @@ const Repair = () => {
                         repairPartnerID={repair.partner}/>
                   </div>
                 </form>
+                <Procedures />
               </div>
             </div>
           )

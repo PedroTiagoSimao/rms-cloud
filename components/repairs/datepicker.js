@@ -2,6 +2,7 @@ import { useState, useEffect, forwardRef } from "react"
 import PocketBase from "pocketbase"
 import DatePicker from 'react-datepicker'
 import { format } from 'date-fns'
+import {BiChevronRight, BiChevronLeft} from 'react-icons/bi'
 
 import "react-datepicker/dist/react-datepicker.css"
 
@@ -45,7 +46,7 @@ const PartnerDatePicker = ({ repairID, dateSentToPartner }) => {
                         }) => (
                             <div className="flex items-center justify-between px-2 py-2">
                                 <span className="text-lg text-gray-700">
-                                    {format(date, 'MMMM yyyy')}
+                                    {format(date, 'dd-mm-yyyy')}
                                 </span>
 
                                 <div className="space-x-2">
@@ -58,7 +59,7 @@ const PartnerDatePicker = ({ repairID, dateSentToPartner }) => {
                                             inline-flex p-1 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-blue-500
                                         `}
                                     >
-                                        <ChevronLeftIcon className="w-5 h-5 text-gray-600" />
+                                        <BiChevronLeft className="w-5 h-5 text-gray-600" />
                                     </button>
 
                                     <button
@@ -70,7 +71,7 @@ const PartnerDatePicker = ({ repairID, dateSentToPartner }) => {
                                             inline-flex p-1 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-blue-500
                                         `}
                                     >
-                                        <ChevronRightIcon className="w-5 h-5 text-gray-600" />
+                                        <BiChevronRight className="w-5 h-5 text-gray-600" />
                                     </button>
                                 </div>
                             </div>
