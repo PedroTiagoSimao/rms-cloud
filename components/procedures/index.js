@@ -4,6 +4,7 @@ import { MdLibraryAdd} from 'react-icons/md'
 
 const Procedures = () => {
     const [showModal, setShowModal] = useState(true);
+    const [procedure, setProcedure] = useState('')
     return (
         <>
         <div className='flex flex-row'>
@@ -93,14 +94,15 @@ const Procedures = () => {
                                     <span className="text-gray-700 dark:text-gray-400">Procedimento</span>
                                     <select
                                         className="w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray pl-10"
-                                        value={'status'}
+                                        value={procedure}
+                                        onChange={(e) => setProcedure(e.target.value)}
                                         >
-                                        <option value={''}>Verificação</option>
-                                        <option value={''}>Diagnóstico</option>
-                                        <option value={''}>Reparação</option>
-                                        <option value={''}>Concluído</option>
-                                        <option value={''}>Sem Reparação</option>
-                                        <option value={''}>Recusado</option>
+                                        <option value={'Verificacao'}>Verificação</option>
+                                        <option value={'Diagnostico'}>Diagnóstico</option>
+                                        <option value={'Reparacao'}>Reparação</option>
+                                        <option value={'Concluido'}>Concluído</option>
+                                        <option value={'Sem-Reparacao'}>Sem Reparação</option>
+                                        <option value={'Recusado'}>Recusado</option>
                                     </select>
                                 </label>
                             </div>
