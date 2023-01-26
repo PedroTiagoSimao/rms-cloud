@@ -75,23 +75,46 @@ const Procedures = () => {
                                 aria-hidden="true">
                                     <path
                                         d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"
-                                        fill-rule="evenodd"
+                                        clipRule="evenodd"
+                                        fillRule="evenodd"
                                     ></path>
                                 </svg>
                             </button>
                         </header>
                         
                         <div className="mt-4 mb-6">
-                        <p
-                            className="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-300"
-                        >
-                            Adicionar procedimento
-                        </p>
-                        <p className="text-sm text-gray-700 dark:text-gray-400">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum et
-                            eligendi repudiandae voluptatem tempore!
-                        </p>
+                            <p
+                                className="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-300"
+                            >
+                                Adicionar procedimento
+                            </p>
+                            <div className='flex flex-col'>
+                                <label className="block text-sm">
+                                    <span className="text-gray-700 dark:text-gray-400">Procedimento</span>
+                                    <select
+                                        className="w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray pl-10"
+                                        value={'status'}
+                                        >
+                                        <option value={''}>Verificação</option>
+                                        <option value={''}>Diagnóstico</option>
+                                        <option value={''}>Reparação</option>
+                                        <option value={''}>Concluído</option>
+                                        <option value={''}>Sem Reparação</option>
+                                        <option value={''}>Recusado</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div className='flex flex-col'>
+                                <label className="block text-sm">
+                                    <span className="text-gray-700 dark:text-gray-400">Notas</span>
+                                    <textarea className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                        placeholder="..."
+                                        name="notes" rows="5"
+                                        defaultValue={''}
+                                        >
+                                    </textarea>
+                                </label>
+                            </div>
                         </div>
                         <footer
                         className="flex flex-col items-center justify-end px-6 py-3 -mx-6 -mb-4 space-y-4 sm:space-y-0 sm:space-x-6 sm:flex-row bg-gray-50 dark:bg-gray-800"
