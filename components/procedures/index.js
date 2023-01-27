@@ -37,9 +37,7 @@ const Procedures = ({repairID}) => {
 
     return (
         <>
-        {loading ? 
-            <>
-            <div className='flex flex-row'>
+        <div className='flex flex-row'>
             <div className='flex items-center justify-start'>
             <h4 className="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 flex">
                 <BsCardChecklist size={30} className='mr-2' />Procedimentos</h4>
@@ -65,36 +63,38 @@ const Procedures = ({repairID}) => {
                             <th className="px-4 py-3">Data notificação</th>
                             </tr>
                         </thead>
-                        <tbody
-                        className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                            {
-                            
-                            procedures.map((proc, i) => {
-                                return (
-                                    <tr key={i} className="text-gray-700 dark:text-gray-400">
-                                        <td className="px-4 py-3">
-                                            <div className="flex items-center text-sm">
-                                                <div>
-                                                    <p className="font-semibold">{proc.procedure}</p>
+                        { loading ? (
+                            <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                                {procedures.map((proc, i) => {
+                                    return (
+                                        <tr key={i} className="text-gray-700 dark:text-gray-400">
+                                            <td className="px-4 py-3">
+                                                <div className="flex items-center text-sm">
+                                                    <div>
+                                                        <p className="font-semibold">{proc.procedure}</p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td className="px-4 py-3 text-sm">
-                                            {proc.description}
-                                        </td>
-                                        <td className="px-4 py-3 text-sm">
-                                            {proc.created}
-                                        </td>
-                                        <td className="px-4 py-3 text-sm">
-                                            {proc.client_notified}
-                                        </td>
-                                        <td className="px-4 py-3 text-sm">
-                                            {proc.client_notified_date}
-                                        </td>
-                                    </tr>
-                                )
-                            })}
-                        </tbody>
+                                            </td>
+                                            <td className="px-4 py-3 text-sm">
+                                                {proc.description}
+                                            </td>
+                                            <td className="px-4 py-3 text-sm">
+                                                {proc.created}
+                                            </td>
+                                            <td className="px-4 py-3 text-sm">
+                                                {proc.client_notified}
+                                            </td>
+                                            <td className="px-4 py-3 text-sm">
+                                                {proc.client_notified_date}
+                                            </td>
+                                        </tr>
+                                    )
+                                })}
+                            </tbody>
+                        ) : (
+                            <Loading />
+                        )
+                        }
                     </table>
                 </div>
             </div>
@@ -173,9 +173,7 @@ const Procedures = ({repairID}) => {
                         </footer>
                     </div>
                 </div>
-            ) : null }</>
-            : <Loading />
-        }
+            ) : null }
         </>
     )
 }
