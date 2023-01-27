@@ -20,7 +20,7 @@ const Repair = () => {
   const {id} = router.query
   const [isLoading, setLoading] = useState(false)
   const [repairs, setRepairs] = useState([])
-  const [status, setStatus] = useState()
+  const [client, setClient] = useState([])
 
   const getRepairs = async () => {
     let url = `https://rms-cloud.pockethost.io/api/collections/repairs/records?filter=(id=%27${id}%27)`
@@ -30,7 +30,17 @@ const Repair = () => {
     const data = await res.json()
     setRepairs(data.items)
     } catch (err) {
-        console.log(err);
+        console.log(err)
+    }
+  }
+
+  const getClient = async ({clientID}) => {
+    try {
+      const res = await fetch(`https://rms-cloud.pockethost.io/api/collections/clients/records?filter=(id=%27${clientID}%27)`)
+      const data = await res.json()
+      setClient(data.items)
+    } catch (err) {
+      console.log(err)
     }
   }
   
@@ -74,7 +84,10 @@ const Repair = () => {
                   <div className='flex flex-col md:flex-row'>
                       <div className='flex flex-col md:w-2/3 md:mr-4 md:mb-5'>
                           <label className="block text-sm">
-                              <span className="text-gray-700 dark:text-gray-400">Cliente</span>
+                              <span
+                                className="text-gray-700 dark:text-gray-400"
+                                on
+                                >Cliente</span>
                               <Link href={`/dashboard/clients/${repair.client}`}>
                               <input
                                   className="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input cursor-pointer"
