@@ -186,7 +186,7 @@ const Client = () => {
                         )
                     })
                 }
-            <ListRepairs organization={organizationID} clientPage={true} />
+            <ListRepairs clientPage={true} clientID={id} />
             </div>
         </main>
     )
