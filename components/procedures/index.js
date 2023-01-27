@@ -1,13 +1,45 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { BsCardChecklist } from 'react-icons/bs';
 import { MdLibraryAdd} from 'react-icons/md'
 
-const Procedures = () => {
-    const [showModal, setShowModal] = useState(true);
+import Loading from '../loading';
+
+import PocketBase from "pocketbase"
+const pb = new PocketBase('https://rms-cloud.pockethost.io')
+pb.autoCancellation(false)
+
+const Procedures = ({repairID}) => {
+    const [showModal, setShowModal] = useState(false);
+    const [procedures, setProcedures] = useState([])
     const [procedure, setProcedure] = useState('')
+    const [loading, setLoading] = useState(false)
+
+    let url = `https://rms-cloud.pockethost.io/api/collections/procedures/records?filter=(repair=%27${repairID}%27)`
+
+    const getProcedures = async () => {
+        try {
+            const res = await fetch(url).then(function(res){
+                setLoading(true)
+                return res
+            })
+            const data = await res.json()
+            setProcedures(data.items)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        getProcedures()
+    }, [])
+
+
     return (
         <>
-        <div className='flex flex-row'>
+        {loading ? 
+            <>
+            <div className='flex flex-row'>
             <div className='flex items-center justify-start'>
             <h4 className="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 flex">
                 <BsCardChecklist size={30} className='mr-2' />Procedimentos</h4>
@@ -35,27 +67,33 @@ const Procedures = () => {
                         </thead>
                         <tbody
                         className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                            <tr className="text-gray-700 dark:text-gray-400">
-                                <td className="px-4 py-3">
-                                    <div className="flex items-center text-sm">
-                                        <div>
-                                            <p className="font-semibold">Hans Burger</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td className="px-4 py-3 text-sm">
-                                    hans@burger.com
-                                </td>
-                                <td className="px-4 py-3 text-sm">
-                                    919 919 919
-                                </td>
-                                <td className="px-4 py-3 text-sm">
-                                    1/2 abertas
-                                </td>
-                                <td className="px-4 py-3 text-sm">
-                                    Email / SMS
-                                </td>
-                            </tr>
+                            {
+                            
+                            procedures.map((proc, i) => {
+                                return (
+                                    <tr key={i} className="text-gray-700 dark:text-gray-400">
+                                        <td className="px-4 py-3">
+                                            <div className="flex items-center text-sm">
+                                                <div>
+                                                    <p className="font-semibold">{proc.procedure}</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td className="px-4 py-3 text-sm">
+                                            {proc.description}
+                                        </td>
+                                        <td className="px-4 py-3 text-sm">
+                                            {proc.created}
+                                        </td>
+                                        <td className="px-4 py-3 text-sm">
+                                            {proc.client_notified}
+                                        </td>
+                                        <td className="px-4 py-3 text-sm">
+                                            {proc.client_notified_date}
+                                        </td>
+                                    </tr>
+                                )
+                            })}
                         </tbody>
                     </table>
                 </div>
@@ -135,7 +173,9 @@ const Procedures = () => {
                         </footer>
                     </div>
                 </div>
-            ) : null }
+            ) : null }</>
+            : <Loading />
+        }
         </>
     )
 }

@@ -168,7 +168,7 @@ const Repair = () => {
                         repairPartnerID={repair.partner}/>
                   </div>
                 </form>
-                <Procedures />
+                <Procedures repairID={repair.id} />
               </div>
             </div>
           )
