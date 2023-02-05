@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { BsCardChecklist } from 'react-icons/bs';
 import { MdLibraryAdd} from 'react-icons/md'
+import {TiDelete} from "react-icons/ti"
 
 import Loading from '../loading';
 
@@ -28,6 +29,10 @@ const Procedures = ({repairID}) => {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    const deleteProcedure = (procedureID) => {
+        console.log('Proc ID: ' + procedureID);
     }
 
     useEffect(() => {
@@ -61,11 +66,13 @@ const Procedures = ({repairID}) => {
                             <th className="px-4 py-3">Data criação</th>
                             <th className="px-4 py-3">Notificar cliente</th>
                             <th className="px-4 py-3">Data notificação</th>
+                            <th className="px-4 py-3"></th>
                             </tr>
                         </thead>
                         { loading ? (
                             <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                                 {procedures.map((proc, i) => {
+                                    const id = proc.id
                                     return (
                                         <tr key={i} className="text-gray-700 dark:text-gray-400">
                                             <td className="px-4 py-3">
@@ -86,6 +93,12 @@ const Procedures = ({repairID}) => {
                                             </td>
                                             <td className="px-4 py-3 text-sm">
                                                 {proc.client_notified_date}
+                                            </td>
+                                            <td className="py-3 text-sm">
+                                                <TiDelete 
+                                                    size={30} 
+                                                    className='text-purple-500 cursor-pointer mr-3'
+                                                    onClick={() => deleteProcedure(proc.id)}/>
                                             </td>
                                         </tr>
                                     )
