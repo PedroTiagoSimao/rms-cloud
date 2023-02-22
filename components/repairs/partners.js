@@ -34,6 +34,7 @@ const Partners = ({repairID, organizationID, repairPartnerID}) => {
 
         const data = {
             "partner": e.target.value,
+            "status": 'Enviado para Parceiro'
         };
         
         const record = await pb.collection('repairs').update(repairID, data);
