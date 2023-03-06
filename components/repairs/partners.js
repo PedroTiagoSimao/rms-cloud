@@ -31,6 +31,7 @@ const Partners = ({repairID, organizationID, repairPartnerID}) => {
 
     const updatePartnerID = async (e) => {
         setSelectedPartner(e.target.value)
+        console.log(selectedPartner);
 
         const data = {
             "partner": e.target.value,
@@ -47,7 +48,8 @@ const Partners = ({repairID, organizationID, repairPartnerID}) => {
             <label className="flex justify-end items-center text-sm">
                 <select className=" w-full text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                     value={selectedPartner}
-                    onChange={(e) => updatePartnerID(e)}>
+                    onChange={(e) => updatePartnerID(e)}
+                    >
                         <option value={'DEFAULT'}>Escolha um parceiro...</option>
                     {
                         partners.map((partner,i) => {

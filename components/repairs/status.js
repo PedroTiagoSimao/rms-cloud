@@ -1,21 +1,51 @@
 import React, { useState, useEffect } from 'react'
 import PocketBase from "pocketbase"
+import Loading from '../loading'
 
 const pb = new PocketBase('https://rms-cloud.pockethost.io')
 
-const Status = ({repairID}) => {
-    const [status, setStatus] = useState()
+const repairStatuses = [
+    {id : "1",
+    name : "Aberto",
+    value: "Aberto"},
+    {id : "2",
+    name : "Diagnóstico",
+    value: "Diagnóstico"},
+    {id : "3",
+    name : "Reparação",
+    value: "Reparação"},
+    {id : "4",
+    name : "Enviado para Parceiro",
+    value: "Enviado para Parceiro"},
+    {id : "5",
+    name : "Concluído",
+    value: "Concluído"},
+    {id : "6",
+    name : "Sem Reparação",
+    value: "Sem Reparação"},
+    {id : "7",
+    name : "Recusado",
+    value: "Recusado"}
+]
 
-    const updateStatus = async (e) => {
-        setStatus(e.target.value)
+const Status = ({repairID, repairCurrentStatus}) => {
+    const [status, setStatus] = useState()
+    const [isLoading, setLoading] = useState(false)
+
+    useEffect(() => {
+        setStatus(repairCurrentStatus)
+    },[])
+
+    const updateStatus = async (a) => {
+        setStatus(a.target.value)
+        setLoading(true)
     
-        e.preventDefault()
         const data = {
-            "status": status,
-        };
-        
-        console.log(status);
+            "status": a.target.value
+        }
+
         const record = await pb.collection('repairs').update(repairID, data);
+        setLoading(false)
     
     }
 
@@ -25,14 +55,15 @@ const Status = ({repairID}) => {
             <select
                 className="w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                 value={status}
-                onChange={(e) => updateStatus(e)}
+                onChange={(a) => updateStatus(a)}
                 >
-                <option value={'Aberto'}>Aberto</option>
-                <option value={'Diagnóstico'}>Diagnóstico</option>
-                <option value={'Reparação'}>Reparação</option>
-                <option value={'Concluído'}>Concluído</option>
-                <option value={'Sem Reparação'}>Sem Reparação</option>
-                <option value={'Recusado'}>Recusado</option>
+                    {
+                        repairStatuses.map((s,i) => {
+                            return (
+                                <option key={i} value={s.value}>{s.name}</option>
+                            )
+                        })
+                    }
             </select>
         </label>
     )

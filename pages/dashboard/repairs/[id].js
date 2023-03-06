@@ -34,6 +34,7 @@ const Repair = () => {
     }
   }
 
+  /*
   const getClient = async ({clientID}) => {
     try {
       const res = await fetch(`https://rms-cloud.pockethost.io/api/collections/clients/records?filter=(id=%27${clientID}%27)`)
@@ -42,7 +43,7 @@ const Repair = () => {
     } catch (err) {
       console.log(err)
     }
-  }
+  }*/
   
   useEffect(() => {
     if(!router.isReady) return
@@ -100,7 +101,7 @@ const Repair = () => {
                           </label>
                       </div>
                       <div className='flex flex-col md:w-1/3'>
-                        <Status repairID={repair.id} />    
+                        <Status repairID={repair.id} repairCurrentStatus={repair.status} />    
                       </div>
                     </div>
                     <div className='flex flex-col md:flex-row'>
